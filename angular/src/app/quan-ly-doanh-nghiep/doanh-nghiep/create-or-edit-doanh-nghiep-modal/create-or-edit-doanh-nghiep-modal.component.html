@@ -1,0 +1,129 @@
+<form *ngIf="isActive" (ngSubmit)="onSave()" [formGroup]="form">
+  <div class="modal-content">
+    <div class="modal-header">
+      <div class="modal-title h4" id="example-modal-sizes-title-lg">
+        {{'::TaoMoiDoanhNghiep' | abpLocalization}} </div>
+    </div>
+    <div
+      class="overlay overlay-block cursor-default modal-body fixed-modal-height">
+      <mat-tab-group>
+        <mat-tab [label]="'::ThongTinChung' | abpLocalization">
+          <div class="form">
+            <div class="row justify-content-center">
+              <h3>{{'::ThongTinDoanhNghiep' | abpLocalization}}</h3>
+            </div>
+            <div class="form-group row">
+              <div class="col-lg-6">
+                <label
+                  class="form-label">{{'::TenDoanhNghiep' | abpLocalization}}
+                  *</label>
+                <input type="text"
+                  class="form-control form-control-lg form-control-solid"
+                  [class.is-invalid]="isControlInvalid(form.get('tenDoanhNghiep'))"
+                  [class.is-valid]="isControlValid(form.get('tenDoanhNghiep'))"
+                  id="tenDoanhNghiep" name="tenDoanhNghiep"
+                  formControlName="tenDoanhNghiep" />
+              </div>
+              <div class="col-lg-6">
+                <label class="form-label">{{'::Email' | abpLocalization}}
+                  *</label>
+                <input type="text"
+                  class="form-control form-control-lg form-control-solid"
+                  [class.is-invalid]="isControlInvalid(form.get('emailDoanhNghiep'))"
+                  [class.is-valid]="isControlValid(form.get('emailDoanhNghiep'))"
+                  id="emailDoanhNghiep" name="emailDoanhNghiep"
+                  formControlName="emailDoanhNghiep" />
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-lg-6">
+                <label class="form-label">{{'::DiaChi' | abpLocalization}}
+                  *</label>
+                <input type="text"
+                  class="form-control form-control-lg form-control-solid"
+                  [class.is-invalid]="isControlInvalid(form.get('diaChiDoanhNghiep'))"
+                  [class.is-valid]="isControlValid(form.get('diaChiDoanhNghiep'))"
+                  name="diaChiDoanhNghiep"
+                  formControlName="diaChiDoanhNghiep" />
+              </div>
+              <div class="col-lg-6">
+                <label class="form-label">{{'::SoDienThoai' | abpLocalization}}
+                  *</label>
+                <input type="text"
+                  class="form-control form-control-lg form-control-solid"
+                  [class.is-invalid]="isControlInvalid(form.get('soDienThoaiDoanhNghiep'))"
+                  [class.is-valid]="isControlValid(form.get('soDienThoaiDoanhNghiep'))"
+                  name="soDienThoaiDoanhNghiep"
+                  formControlName="soDienThoaiDoanhNghiep" />
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-lg-6">
+                <label class="form-label">{{'::NganhNghe' | abpLocalization}}
+                </label>
+                <input type="text"
+                  class="form-control form-control-lg form-control-solid"
+                  name="nganhNgheDoanhNghiep"
+                  formControlName="nganhNgheDoanhNghiep" />
+              </div>
+            </div>
+            <div class="row justify-content-center pt-10">
+              <h3>{{'::NguoiDaiDienDoanhNghiep' | abpLocalization}}</h3>
+            </div>
+            <div class="form-group row">
+              <div class="col-lg-6">
+                <label class="form-label">{{'::HoVaTen' | abpLocalization}}
+                  *</label>
+                <input type="text"
+                  class="form-control form-control-lg form-control-solid"
+                  [class.is-invalid]="isControlInvalid(form.get('tenNguoiDaiDien'))"
+                  [class.is-valid]="isControlValid(form.get('tenNguoiDaiDien'))"
+                  name="tenNguoiDaiDien" formControlName="tenNguoiDaiDien" />
+              </div>
+              <div class="col-lg-6">
+                <label class="form-label">{{'::Email' | abpLocalization}}
+                  *</label>
+                <input type="text"
+                  class="form-control form-control-lg form-control-solid"
+                  [class.is-invalid]="isControlInvalid(form.get('emailNguoiDaiDien'))"
+                  [class.is-valid]="isControlValid(form.get('emailNguoiDaiDien'))"
+                  name="emailNguoiDaiDien"
+                  formControlName="emailNguoiDaiDien" />
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-lg-6">
+                <label class="form-label">{{'::ChucVu' | abpLocalization}}
+                </label>
+                <input type="text"
+                  class="form-control form-control-lg form-control-solid"
+                  name="chucVuNguoiDaiDien"
+                  formControlName="chucVuNguoiDaiDien" />
+              </div>
+              <div class="col-lg-6">
+                <label class="form-label">{{'::SoDienThoai' | abpLocalization}}
+                  *</label>
+                <input type="text"
+                  class="form-control form-control-lg form-control-solid"
+                  [class.is-invalid]="isControlInvalid(form.get('soDienThoaiNguoiDaiDien'))"
+                  [class.is-valid]="isControlValid(form.get('soDienThoaiNguoiDaiDien'))"
+                  name="soDienThoaiNguoiDaiDien"
+                  formControlName="soDienThoaiNguoiDaiDien" />
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab [label]="'::Menu:Users' | abpLocalization">Content 2</mat-tab>
+      </mat-tab-group>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light btn-elevate mr-2"
+        (click)="onClose()">
+        <i class="fa fa-arrow-left"></i> {{'::Back' | abpLocalization}}
+      </button>
+      <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
+        <i class="fa fa-check"></i> {{'::LuuThongTin' | abpLocalization}}
+      </button>
+    </div>
+  </div>
+</form>

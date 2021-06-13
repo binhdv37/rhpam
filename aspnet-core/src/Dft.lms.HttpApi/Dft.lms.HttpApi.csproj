@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>Dft.lms</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Dft.lms.Application.Contracts\Dft.lms.Application.Contracts.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Volo.Abp.Account.HttpApi" Version="4.3.2" />
+    <PackageReference Include="Volo.Abp.Identity.HttpApi" Version="4.3.2" />
+    <PackageReference Include="Volo.Abp.PermissionManagement.HttpApi" Version="4.3.2" />
+    <PackageReference Include="Volo.Abp.TenantManagement.HttpApi" Version="4.3.2" />
+    <PackageReference Include="Volo.Abp.FeatureManagement.HttpApi" Version="4.3.2" />
+    <PackageReference Include="Volo.Abp.SettingManagement.HttpApi" Version="4.3.2" />
+  </ItemGroup>
+
+</Project>

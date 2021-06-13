@@ -1,0 +1,92 @@
+<div class="card card-custom gutter-b">
+  <div class="card-header">
+    <div class="card-title">
+      <h3 class="card-label">{{'::DanhSachDoanhNghiep' | abpLocalization}}</h3>
+    </div>
+  </div>
+  <div class="card-body">
+    <!-- begin: Filtration form -->
+    <div class="row justify-content-center">
+      <div class="card-toolbar">
+        <button type="button" class="btn btn-primary" (click)="create()">
+          <i class="fa fa-plus"></i> {{'::TaoMoiDoanhNghiep' | abpLocalization}}
+        </button>
+      </div>
+    </div>
+    <div class="form">
+      <div class="form-group row justify-content-center">
+        <div class="col-md-10" [formGroup]="searchGroup">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <button class="btn btn-outline-secondary" type="button"
+                (click)="getData()"><i class="fa fa-search"></i></button>
+            </div>
+            <input type="text" class="form-control" name="searchText"
+              [placeholder]="'::EnterprisesPlaceholderFilter'| abpLocalization"
+              value="" formControlName="searchTerm" (keyup.enter)="getData()" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-end">
+      <div class="card-toolbar">
+        <button [disabled]="grouping.getSelectedRowsCount() === 0" type="button"
+          class="btn btn-danger" (click)="delete()">
+          <i class="fa fa-trash"></i> {{'::Delete' | abpLocalization}} </button>
+      </div>
+    </div>
+    <!-- end: Filtration form -->
+    <!-- begin:Table -->
+    <div class="table-responsive angular-bootstrap-table">
+      <table
+        class="table table-head-custom table-vertical-center overflow-hidden">
+        <thead>
+          <th class="selection-cell-header" data-row-selection="true">
+            <label class="checkbox checkbox-single"><input type="checkbox"
+                (click)="grouping.selectAllRows()"
+                [checked]="grouping.checkAreAllRowsSelected()" /><span></span></label>
+          </th>
+          <th> STT </th>
+          <th> {{'::TenDoanhNghiep' | abpLocalization}} <app-sort-icon
+              column="tenDoanhNghiep" [activeColumn]="sorting.column"
+              [activeDirection]="sorting.direction" (sort)="sort($event)">
+            </app-sort-icon>
+          </th>
+          <th> {{'::Email' | abpLocalization}} <app-sort-icon
+              column="emailDoanhNghiep" [activeColumn]="sorting.column"
+              [activeDirection]="sorting.direction" (sort)="sort($event)">
+            </app-sort-icon>
+          </th>
+          <th> {{'::DiaChi' | abpLocalization}} <app-sort-icon
+              column="diaChiDoanhNghiep" [activeColumn]="sorting.column"
+              [activeDirection]="sorting.direction" (sort)="sort($event)">
+            </app-sort-icon>
+          </th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let doanhNghiep of doanhNghiepList; let i = index">
+            <td class="selection-cell">
+              <label class="checkbox checkbox-single"><input type="checkbox"
+                  (click)="grouping.selectRow(doanhNghiep.id)"
+                  [checked]="grouping.isRowSelected(doanhNghiep.id)" />
+                <span></span>
+              </label>
+            </td>
+            <td>{{ i + 1 }}</td>
+            <td>
+              <a href="javascript:void(0)" (click)="edit(doanhNghiep.id)">
+                {{ doanhNghiep.tenDoanhNghiep }}</a>
+            </td>
+            <td>{{ doanhNghiep.emailDoanhNghiep }}</td>
+            <td>{{ doanhNghiep.diaChiDoanhNghiep }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- end: Table -->
+    <app-paginator
+      class="d-flex justify-content-between align-items-center flex-wrap"
+      [paginator]="paginator" [isLoading]="isLoading" (paginate)="paginate()">
+    </app-paginator>
+  </div>
+</div>
